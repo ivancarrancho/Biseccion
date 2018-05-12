@@ -1,6 +1,6 @@
 package biseccion;
 import java.util.Scanner;
-
+ 
 /**
  *
 * @author ivan
@@ -17,13 +17,13 @@ public class Biseccion {
       String c;
       String t;
       String g;
-      System.out.println("Ingrese el número de iteraciones\n ");
+      System.out.println("Ingrese el número de iteraciones ");
       g = reader.nextLine();
 
-      System.out.println("Ingrese el número 1\n ");
+      System.out.println("Ingrese el número 1 ");
       c = reader.nextLine();
 
-      System.out.println("Ingrese el número 2\n ");
+      System.out.println("Ingrese el número 2 ");
       t = reader.nextLine();
 
       Biseccion biseccion = new Biseccion();
@@ -39,41 +39,43 @@ public class Biseccion {
    }
 
    public void solucion() {
-      System.out.println("******Intervalo : [" + a + ", " + b + "]");
+      System.out.println("****** Valor 1: " +a);
+      System.out.println("****** Valor 2: " +b);
       System.out.println("******Error : " + error);
+      System.out.println("\n");
       System.out.println("******Iteraciones : " + iteraciones);
       System.out.println("------------------------------------------------ \n");
 
       double c = 0;
-      double fa = 0;
-      double fb = 0;
-      double fc = 0;
+      double funcion_a = 0;
+      double funcion_b = 0;
+      double funcion_c = 0;
       int iteracion = 1;
 
       do {
          c = (a + b) / 2;
 
          System.out.println("Iteracion (" + iteracion + ") : " + c);
-         fa = funcion(a);
-         fb = funcion(b);
-         fc = funcion(c);
+         funcion_a = funcion(a);
+         funcion_b = funcion(b);
+         funcion_c = funcion(c);
 
-         if (fc * fa < 0) {
+         if (funcion_c * funcion_a < 0) {
             b = c;
-            fa = funcion(a);
-            fb = funcion(b);
+            funcion_a = funcion(a);
+            funcion_b = funcion(b);
             c = (a + b) / 2;
-            fc = funcion(c);
+            funcion_c = funcion(c);
          } else {
             a = c;
-            fa = funcion(a);
-            fb = funcion(b);
+            funcion_a = funcion(a);
+            funcion_b = funcion(b);
             c = (a + b) / 2;
-            fc = funcion(c);
+            funcion_c = funcion(c);
          }
          iteracion++;
 
-      } while (iteracion <= iteraciones && Math.abs(fc) >= error);
+      } while (iteracion <= iteraciones && Math.abs(funcion_c) >= error);
 
    }
 
